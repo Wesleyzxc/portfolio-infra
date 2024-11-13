@@ -9,17 +9,19 @@
     "get": "cdktf get",
     "build": "tsc",
     "synth": "cdktf synth",
+    "plan": "cdktf plan",
+    "apply": "cdktf apply",
     "compile": "tsc --pretty",
     "watch": "tsc -w",
     "test": "jest",
     "test:watch": "jest --watch",
-    "upgrade": "npm i cdktf@latest cdktf-cli@latest",
-    "upgrade:next": "npm i cdktf@next cdktf-cli@next"
+    "upgrade": "npm i cdktf@latest cdktf-cli@latest"
   },
   "engines": {
-    "node": ">=18.0"
+    "node": ">=20.0"
   },
   "dependencies": {
+    "@cdktf/provider-aws": "^19.41.1",
     "@cdktf/provider-docker": "11.0.0",
     "cdktf": "^0.20.10",
     "constructs": "^10.4.2"

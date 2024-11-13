@@ -1,14 +1,15 @@
-import { Construct } from "constructs";
-import { App, TerraformStack } from "cdktf";
-
-class MyStack extends TerraformStack {
-  constructor(scope: Construct, id: string) {
-    super(scope, id);
-
-    // define resources here
-  }
-}
+import { App, S3Backend } from "cdktf";
+import { DEFAULT_REGION } from "./config";
+import { Portfolio } from "./stacks/portfolio";
 
 const app = new App();
-new MyStack(app, "portfolio-infra");
+const stack = new Portfolio(app, "portfolio-infra");
+
+const TF_STATE_BUCKET = 'wesley-tf';
+new S3Backend(stack, {
+  bucket: TF_STATE_BUCKET,
+  region: DEFAULT_REGION,
+  key: 'state',
+});
+
 app.synth();
