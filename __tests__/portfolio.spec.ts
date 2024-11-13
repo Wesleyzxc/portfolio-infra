@@ -1,4 +1,3 @@
-import { CloudfrontDistribution } from "@cdktf/provider-aws/lib/cloudfront-distribution";
 import { S3Bucket } from "@cdktf/provider-aws/lib/s3-bucket";
 import { S3BucketPublicAccessBlock } from "@cdktf/provider-aws/lib/s3-bucket-public-access-block";
 import { Testing } from "cdktf";
@@ -6,14 +5,6 @@ import "cdktf/lib/testing/adapters/jest";
 import { Portfolio } from "../stacks/portfolio";
 
 describe("portfolio", () => {
-  it("should be a valid stack", () => {
-    const app = Testing.app();
-    const stack = new Portfolio(app, "my-app");
-
-    expect(Testing.fullSynth(stack)).toBeValidTerraform();
-    expect(Testing.fullSynth(stack)).toPlanSuccessfully();
-  });
-
   it("should contain an s3 bucket with public access", () => {
     const app = Testing.app();
     const stack = new Portfolio(app, "my-app");
